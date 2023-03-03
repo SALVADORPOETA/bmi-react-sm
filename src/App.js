@@ -13,9 +13,9 @@ function App() {
     // prevent submitting
     event.preventDefault()
 
-    if (weight === '' || height === '') {
-      alert('Please enter a valid weight and height')
-    } else {
+    if (weight !== '' && height !== '') {
+    //   alert('Please enter a valid weight and height')
+    // } else {
       let bmi = (weight / (height * height) * 703)
       setBmi(bmi.toFixed(1))
 
@@ -46,9 +46,11 @@ function App() {
     }
   }
 
-
-  let reload = () => {
-    window.location.reload()
+  let reset = () => {
+    setWeight('');
+    setHeight('');
+    setBmi('');
+    setMessage('');
   }
 
   return (
@@ -66,7 +68,7 @@ function App() {
           </div>
           <div>
             <button className="btn" type="submit" >Submit</button>
-            <button className="btn btn-outline" onClick={reload} type="submit" >Reload</button>
+            <button className="btn btn-outline" onClick={reset} type="submit" >Clear</button>
           </div>
         </form>
         <div className="center" >
